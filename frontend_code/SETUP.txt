@@ -1,0 +1,28 @@
+FLUTTER SETUP (5 steps)
+
+1. Main folder (audio_video_app) mein terminal kholo aur:
+      flutter create frontend --project-name audio_video_app --platforms=android
+
+2. Naye project mein packages add karo:
+      cd frontend
+      flutter pub add dio record just_audio video_player chewie permission_handler path_provider image_picker
+
+3. Is zip ke "lib" folder ko frontend/lib mein copy karke purani lib REPLACE karo.
+   "test" folder ko frontend/test mein copy karo aur purani test/widget_test.dart DELETE karo.
+
+4. frontend/android/app/src/main/AndroidManifest.xml kholo:
+   a) <manifest> ke andar, <application> se pehle ye 2 lines add karo:
+        <uses-permission android:name="android.permission.INTERNET"/>
+        <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+   b) <application ...> tag mein ye attribute add karo:
+        android:usesCleartextTraffic="true"
+
+   frontend/android/app/build.gradle (ya build.gradle.kts) mein minSdk 23 karo:
+        minSdk = 23        (ya minSdkVersion 23)
+
+5. Backend chalu rakho (python run.py), phir:
+      flutter run
+      flutter test
+
+Real phone par: lib/constants.dart mein baseUrl laptop ke IP se badlo,
+jaise 'http://192.168.1.5:5000' (phone aur laptop same Wi-Fi par).

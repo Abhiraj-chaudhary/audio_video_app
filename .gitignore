@@ -1,0 +1,7 @@
+__pycache__/
+*.db
+venv/
+.pytest_cache/
+uploads/audio/*
+uploads/video/*
+!uploads/*/.gitkeep
